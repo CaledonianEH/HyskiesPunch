@@ -1,0 +1,50 @@
+# HyskiesPunch message file generated using HyskiesPunch-1.0
+# This plugin mainly supports 1.8.8, but may work in later versions
+
+prefix: '&8(&b&lH&f&lP&8)&f'
+
+help:
+  main:
+    - '&b*&8&m-----------&b*&8&m------------------&b*&8&m-----------&b*'
+    - '&b     Hyskies &fPunch'
+    - '&f * &b/hp &8- &fMain plugin command'
+    - '&f * &b/hp status &8- &fView plugin stats'
+    - '&f * &b/hp set &8- &fForce player settings'
+    - '&f * &b/punch &8- &fMain punch command'
+    - '&b*&8&m-----------&b*&8&m------------------&b*&8&m-----------&b*'
+  status: '%prefix% Usage&8: &b/hp status <sql/online>'
+  set: '%prefix% Usage&8: &b/hp set <player> <self/other> <&a1&b/&c0&b>'
+  punch: '%prefix% Usage&8: &b/punch <[player]/toggle> <can/be>'
+core:
+  no-perm: '%prefix% You do &bnot &fhave permission.'
+  console-error: '&cYou must be a player to execute this command!'
+  player-null: '%prefix% &b%player% &fwas not found.'
+  cooldown: '%prefix% You cannot punch a player for another &b%time% &fseconds.'
+
+punch:
+  self: '%prefix% You punched &b%player% &finto the air. %remote%'
+  broadcast: '%prefix% &b%t_displayname% &fwas thrown into the air by &b%p_displayname%&f.'
+  broadcast-remote: '%prefix% &b%t_displayname% &fwas remotely thrown into the air by &b%p_displayname%&f.'
+  player-disabled: '%prefix% &b%target% &fhas disabled being punched.'
+  user-disabled: '%prefix% You have punching others &cDisabled&f. Use &b/punch toggle can &fto enable.'
+  tried-to-punch: '%prefix% &b%player% &ftried to punch you, but you have it disabled. Use &b/punch toggle others &fto allow others.t'
+
+status:
+  be-punched: '%prefix% &b%num% &fplayers can be punched.'
+  can-punch: '%prefix% &b%num% &fplayers can punch others.'
+
+toggle:
+  enabled-others: '%prefix% You &aAllowed &fothers to punch you.'
+  disabled-others: '%prefix% You &cDisabled &fothers to punch you.'
+  enabled-self: '%prefix% You will now be &aAble &fto punch others.'
+  disabled-self: '%prefix% You will now &cNot &fbe able &fto punch others.'
+
+set:
+  self: '%prefix% You allowed others to punch &b%player%&f.'
+  self-off: '%prefix% You disallowed others to punch &b%player%&f.'
+  self-send: '%prefix% Others will be allowed to punch you, since a &bStaff Member &fforced it.'
+  self-send-off: '%prefix% Others will not be allowed to punch you, since a &bStaff Member &fforced it.'
+  other: '%prefix% You allowed &b%player% &fto punch others.'
+  other-off: '%prefix% You disallowed &b%player% &fto punch others.'
+  other-send: '%prefix% You can now punch others, since a &bStaff Member &fforced it.'
+  other-send-off: '%prefix% You will not be allowed to punch others, since a &bStaff Member &fforced it.'

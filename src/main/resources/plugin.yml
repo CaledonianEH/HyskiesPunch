@@ -1,0 +1,18 @@
+name: HyskiesPunch
+version: ${project.version}
+main: me.caledonian.hyskiespunch.HyskiesPunch
+api-version: 1.16
+authors: [ Caledonian ]
+description: Just a punch plugin
+website: net.hyskies
+softdepend:
+  - PlaceholderAPI
+commands:
+  hyskiespunch:
+    description: Main punch command
+    aliases: [hp, punchadmin, punchhelp]
+  punch:
+    description: Player command
+    aliases: [p, punchuser]
+  hdebug:
+    description: Just a debug command. Ignore this

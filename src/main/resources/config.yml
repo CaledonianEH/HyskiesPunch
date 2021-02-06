@@ -1,0 +1,26 @@
+# HyskiesPunch config file generated using HyskiesPunch-${project.version}
+# This plugin mainly supports 1.8.8, but may work in later versions
+
+mysql:
+  enable: false # Required to boot. Imma say this 1 more time ADAM. REQUIRED TO BOOT
+  host: 'localhost'
+  database: 'hyskiesPunch'
+  username: 'root'
+  password: ''
+  port: 3306 # Usually the default port, unless specified
+  debug: false
+
+punch:
+  amount: 4
+  cooldown: 60 # In seconds
+  disable-fall-damage: true
+
+
+perms:
+  status: 'hyskiespunch.admin.status'
+  set: 'hyskiespunch.admin.set'
+  punch: 'hyskiespunch.use'
+  punch-staff: 'hyskiespunch.staff'
+  punch-admin: 'hyskiespunch.admin'
+
+update-checker: true
