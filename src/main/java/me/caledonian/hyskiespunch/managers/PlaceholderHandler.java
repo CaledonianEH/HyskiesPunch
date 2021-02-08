@@ -48,6 +48,5 @@ public class PlaceholderHandler extends PlaceholderExpansion {
         }
         return null;
 
-
     }
 }

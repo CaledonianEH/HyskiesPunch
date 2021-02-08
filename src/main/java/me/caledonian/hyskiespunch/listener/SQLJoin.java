@@ -17,9 +17,10 @@ public class SQLJoin implements Listener {
     @EventHandler
     public void join(PlayerJoinEvent e){
         Bukkit.getScheduler().runTaskLaterAsynchronously(plugin, () ->{
-            if(HyskiesPunch.SQL.isConnected()){Logger.log(Logger.LogLevel.ERROR, "HyskiesSync is not connected to a database. Cannot create player.");}
-            Player p = e.getPlayer();
-            HyskiesPunch.data.createPlayer(p);
+            if(!HyskiesPunch.SQL.isConnected()){Logger.log(Logger.LogLevel.ERROR, "HyskiesSync is not connected to a database. Cannot create player.");}else{
+                Player p = e.getPlayer();
+                HyskiesPunch.data.createPlayer(p);
+            }
         }, 30L);
     }
 }

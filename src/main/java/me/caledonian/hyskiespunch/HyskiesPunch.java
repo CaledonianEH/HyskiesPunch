@@ -24,7 +24,6 @@ public final class HyskiesPunch extends JavaPlugin {
     public void onEnable() {
 
         Files.base(this);
-        new CommandManager(this);
         // Registering
         if(Files.config.getBoolean("mysql.enable") == false){
             Logger.log(Logger.LogLevel.WARNING, "You must be connected to SQL for the plugin to enable. TIP: Make sure &6enable: &fis set to true.");
@@ -56,6 +55,7 @@ public final class HyskiesPunch extends JavaPlugin {
                 data.createTable();
             }
 
+            new CommandManager(this);
             Logger.log(Logger.LogLevel.INFO, "Registering all events");
             Bukkit.getServer().getPluginManager().registerEvents(new SQLJoin(this), this);
             Bukkit.getServer().getPluginManager().registerEvents(new HitEvent(this), this);
@@ -68,7 +68,10 @@ public final class HyskiesPunch extends JavaPlugin {
     @Override
     public void onDisable() {
         Logger.log(Logger.LogLevel.INFO, "HyskiesPunch is starting to shut down.");
-        if(SQL.isConnected()){SQL.disconnect();}
+        if(Files.config.getBoolean("mysql.enable") == true){
+            if(SQL.isConnected()){SQL.disconnect();}
+
+        }
     }
 
     public static HyskiesPunch getPlugin(){return plugin;}

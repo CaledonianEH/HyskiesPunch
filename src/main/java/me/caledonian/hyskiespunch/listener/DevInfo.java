@@ -35,7 +35,7 @@ public class DevInfo implements Listener {
     // Update Checker
     @EventHandler
     public void update(PlayerJoinEvent e){
-        String update = Utils.chat("&f&oexample.com");
+        String update = Utils.chat("&f&obit.ly/3q0RYaY");
         Player p = e.getPlayer();
 
         Bukkit.getScheduler().runTaskLaterAsynchronously(plugin, () ->{

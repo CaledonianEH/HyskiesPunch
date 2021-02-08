@@ -25,8 +25,8 @@ public class Utils {
 
 
     // Other Strings
-    public static String ver = "0.1.2";
-    public static Integer id = 6245;
+    public static String ver = "1.0";
+    public static Integer id = 88740;
 
     public static String prefix = chat(Files.msgs.getString("prefix"));
 

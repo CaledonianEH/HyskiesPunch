@@ -32,35 +32,35 @@ public class HitEvent implements Listener {
     public void Hit(EntityDamageByEntityEvent e){
         Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
             Entity te = e.getEntity();
-
-
-            Player t = (Player) Bukkit.getPlayer(te.getName());
             Entity pe = e.getDamager();
-            Player p = (Player) Bukkit.getPlayer(pe.getName());
+            if(te.getType().equals(EntityType.PLAYER) && pe.getType().equals(EntityType.PLAYER)){
+                Player t = (Player) Bukkit.getPlayer(te.getName());
+                Player p = (Player) Bukkit.getPlayer(pe.getName());
 
-            if(HyskiesPunch.SQL.isConnected()){
-                if (cd.containsKey(p.getName())) {
-                    long oldTime = cd.get(p.getName());
-                    long newTime = System.currentTimeMillis();
-                    if ((newTime - oldTime) > (Files.config.getInt("punch.cooldown") * 1000)) {
-                        cd.remove(p.getName());
+                if(HyskiesPunch.SQL.isConnected()){
+                    if (cd.containsKey(p.getName())) {
+                        long oldTime = cd.get(p.getName());
+                        long newTime = System.currentTimeMillis();
+                        if ((newTime - oldTime) > (Files.config.getInt("punch.cooldown") * 1000)) {
+                            cd.remove(p.getName());
+                            Bukkit.getScheduler().runTaskLaterAsynchronously(plugin, () ->{
+                                punch(p, t);
+                            }, 1L);
+                        }else{
+                            int time = (int) (newTime - oldTime);
+                            int ti = Files.config.getInt("punch.cooldown") - time / 1000;
+                            p.sendMessage(Utils.chat(Files.msgs.getString("core.cooldown").replace("%prefix%", prefix).replace("%time%", String.valueOf(ti))));
+                        }
+                    } else {
+                        // Starting cooldown
+                        cd.put(p.getName(), System.currentTimeMillis());
+                        // Punch logic
                         Bukkit.getScheduler().runTaskLaterAsynchronously(plugin, () ->{
                             punch(p, t);
                         }, 1L);
-                    }else{
-                        int time = (int) (newTime - oldTime);
-                        int ti = Files.config.getInt("punch.cooldown") - time / 1000;
-                        p.sendMessage(Utils.chat(Files.msgs.getString("core.cooldown").replace("%prefix%", prefix).replace("%time%", String.valueOf(ti))));
                     }
-                } else {
-                    // Starting cooldown
-                    cd.put(p.getName(), System.currentTimeMillis());
-                    // Punch logic
-                    Bukkit.getScheduler().runTaskLaterAsynchronously(plugin, () ->{
-                        punch(p, t);
-                    }, 1L);
-                }
-            }else{Logger.log(Logger.LogLevel.ERROR, "HyskiesSync is not connected to a database. Cannot execute punch.");}
+                }else{Logger.log(Logger.LogLevel.ERROR, "HyskiesSync is not connected to a database. Cannot execute punch.");}
+            }
         });
     }
 

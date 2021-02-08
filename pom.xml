@@ -6,7 +6,7 @@
 
     <groupId>me.caledonian</groupId>
     <artifactId>HyskiesPunch</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
     <name>HyskiesPunch</name>
